@@ -31,13 +31,15 @@ class SendWeeklyTodoEmails extends Command
         $users = User::all();
 
         foreach ($users as $user) {
-            $todos = Todo::where('user_id' . $user->id)
+            $todos = Todo::where('user_id', $user->id)
                 ->where('is_completed', true)
-                // ->whereBetween('updated_at', [now()->startOfWeek(), now()->endOfWeek()])
+                ->whereBetween('updated_at', [now()->startOfWeek(), now()->endOfWeek()])
                 ->get();
 
             if ($todos->isNotEmpty()) {
-                $user->notify(new CompletedTodo($todos));
+                foreach ($todos as $todo) {
+                    $user->notify(new CompletedTodo($todo->only(['id', 'title'])));
+                }
             }
         }
 

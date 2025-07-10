@@ -18,10 +18,7 @@ class TodoOperationsController extends Controller
         $todo = Todo::query()->where('id', $id)->where('user_id', Auth::id())->firstOrFail();
         $todo->is_completed = !$todo->is_completed;
         $todo->save();
-        if ($todo->is_completed) {
 
-            Auth::user()->notify(new CompletedTodo($todo));
-        }
         return $this->success('Completion status updated successfully!', 200, $todo);
     }
 }

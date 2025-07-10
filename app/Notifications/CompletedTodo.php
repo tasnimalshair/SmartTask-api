@@ -11,7 +11,7 @@ class CompletedTodo extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    public $todo;
+    protected $todo;
 
     public function __construct($todo)
     {
@@ -27,17 +27,17 @@ class CompletedTodo extends Notification implements ShouldQueue
     {
         return (new MailMessage)
             ->subject('Todo Completed')
-            ->line("The task \"{$this->todo->title}\" has been marked as completed.")
-            ->action('View Task', url('/todos/' . $this->todo->id))
+            ->line("The task \"{$this->todo['title']}\" has been marked as completed.")
+            ->action('View Task', url('/todos/' . $this->todo['id']))
             ->line('Good job!');
     }
 
     public function toDatabase($notifiable)
     {
         return [
-            'todo_id' => $this->todo->id,
-            'title' => $this->todo->title,
-            'message' => 'You have completed a task!',
+            'todo_id' => $this->todo['id'],
+            'title' => $this->todo['title'],
+            'message' => 'Completed task!',
         ];
     }
 
