@@ -1,61 +1,121 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📝 SmartTask – Laravel API for Task Management
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+SmartTask is a powerful task management back-end API built with Laravel 12.
+It includes:
+1) Secure user authentication using sanctum
+2) Full CRUD for tasks
+3) Email and database weekly notifications
+4) Weekly statistics
+6) Scheduled reports
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- 🔐 User authentication with Laravel Sanctum
+- 📝 Full CRUD operations for todos (linked to each user)
+- 📁 Full CRUD for categories
+- 📬 Notifications when tasks are completed (Email + stored in DB)
+- 📊 Weekly statistics endpoint
+- 🕒 Scheduled weekly report via email and database
+- 🌱 Seeders for test data population
+- 📦 Form Requests for validation handling
+- 🧩 API Resources for clean and consistent JSON responses
+- 🧪 API documentation with Postman collection
+- 📸 Screenshots included for quick reference
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## ⚙️ Installation
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```bash
+git clone [https://github.com/USERNAME/smarttask-api.git](https://github.com/tasnimalshair/Todolist-App.git)
+cd Todolist-App
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan db:seed
+php artisan migrate
+php artisan serve
+````
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+> To enable scheduled reports and notifications:
 
-## Laravel Sponsors
+```bash
+php artisan queue:work
+php artisan schedule:work
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## 🔐 Authentication – API Endpoints
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 📌 Auth
 
-## Contributing
+| Method | Endpoint      | Description          |
+| ------ | ------------- | -------------------- |
+| POST   | /api/register | Register a new user  |
+| POST   | /api/login    | Log in and get token |
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 📝 Todos
 
-## Code of Conduct
+| Method | Endpoint        | Description            |
+| ------ | --------------- | ---------------------- |
+| GET    | /api/todos      | Get all user tasks     |
+| GET    | /api/todos/{id} | Get a specific task    |
+| POST   | /api/todos      | Create a new task      |
+| PUT    | /api/todos/{id} | Update a specific task |
+| DELETE | /api/todos/{id} | Delete a task          |
+| PUT    | /api/todos/{id}/ops |Toggle a task status|
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 📁 Categories
 
-## Security Vulnerabilities
+| Method | Endpoint             | Description                |
+|--------|----------------------|----------------------------|
+| GET    | /api/categories      | Get all categories         |
+| GET    | /api/categories/{id} | Get a specific category     |
+| POST   | /api/categories      | Create a new category       |
+| PUT    | /api/categories/{id} | Update a specific category  |
+| DELETE | /api/categories/{id} | Delete a category           |
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 📊 Statistics
 
-## License
+| Method | Endpoint   | Description               |
+| ------ | ---------- | ------------------------- |
+| GET    | /api/stats | Weekly stats for the user |
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## 🧪 Token Usage (in Postman)
+
+After logging in, copy the `token` from the response and use it in Postman:
+
+> Authorization → Bearer Token → `your_token_here`
+
+---
+
+## 📄 API Documentation
+
+🧩 A Postman collection is included in the `docs` folder:
+`Todolist.postman_collection.json`
+
+You can import it directly into Postman and test all endpoints.
+
+---
+
+## 📸 Screenshots
+
+Available in the `docs/screenshots/` directory:
+
+The following screenshot shows the full list of available API endpoints in Postman.
+<img width="1366" height="768" alt="endpoints" src="https://github.com/user-attachments/assets/fa5c1d97-7f9b-4e4c-87e8-adfb2a39a240" />
+
+Example of login request and response
+<img width="1366" height="768" alt="login" src="https://github.com/user-attachments/assets/01cab810-a724-4b27-b7bc-04dc50ef3b2e" />
+
+---
+
+## 👩‍💻 Author
+
+Tasnim Alshair – [GitHub Profile](https://github.com/tasnimalshair)
