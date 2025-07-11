@@ -12,6 +12,9 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+##
+Route::get('todos/stat', [TodoStatController::class, 'index'])->middleware('auth:sanctum');
+
 ## Todo
 Route::post('register', [LoginController::class, 'register']);
 Route::post('login', [LoginController::class, 'login']);
@@ -27,5 +30,3 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('categories', CategoryController::class);
 });
 
-##
-Route::get('todos/stat', [TodoStatController::class, 'index'])->middleware('auth:sanctum');

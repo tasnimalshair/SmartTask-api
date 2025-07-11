@@ -26,9 +26,11 @@ class CompletedTodo extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Todo Completed')
-            ->line("The task \"{$this->todo['title']}\" has been marked as completed.")
-            ->action('View Task', url('/todos/' . $this->todo['id']))
+            ->subject("🎯 Task Completed – You're on fire! ")
+            ->line("Hey {$notifiable->name}! ")
+            ->line("{$this->todo->title} is ✔️ Done. ")
+            ->line("You're seriously on a roll 🔥")
+            ->line("Keep smashing those goals — SmartTask is cheering for you 🙌")
             ->line('Good job!');
     }
 
