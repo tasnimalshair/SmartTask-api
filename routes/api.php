@@ -4,6 +4,7 @@ use App\Http\Controllers\API\Auth\LoginController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Todo\TodoController;
 use App\Http\Controllers\Todo\TodoOperationsController;
+use App\Http\Controllers\Todo\TodoStatController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,6 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('categories', CategoryController::class);
 });
+
+##
+Route::get('todos/stat', [TodoStatController::class, 'index'])->middleware('auth:sanctum');
