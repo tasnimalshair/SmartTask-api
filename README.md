@@ -27,6 +27,25 @@ It includes:
 
 ---
 
+## 🛠️ Technologies Used
+
+This project was built using the following technologies and tools:
+
+- **Laravel 12** – PHP framework for web applications
+- **PHP 8.x** – Core programming language
+- **MySQL** – Relational database for storing tasks and users
+- **Laravel Sanctum** – For API token authentication
+- **Form Requests** – For input validation and clean controller logic
+- **API Resources** – For formatting consistent JSON responses
+- **Mail & Notifications** – For sending email and database notifications
+- **Queue System** – For background email delivery (async notifications)
+- **Task Scheduling** – For sending weekly reports via email
+- **Postman** – For API testing and documentation
+- **Seeder & Faker** – For generating test data during development
+- **Git & GitHub** – For version control and project sharing
+
+---
+
 ## ⚙️ Installation
 
 ```bash
