@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Todo;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AddTodoRequest;
-use App\Http\Requests\UpdateTodoRequest;
+use App\Http\Requests\Todo\StoreTodoRequest;
+use App\Http\Requests\Todo\UpdateTodoRequest;
 use App\Http\Resources\TodoResource;
-use Illuminate\Http\Request;
 use App\Http\Traits\ApiResponse;
 use App\Models\Todo;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 class TodoController extends Controller
 {
@@ -34,7 +32,7 @@ class TodoController extends Controller
         return $this->success('Todo get successfully!', 200, new TodoResource($todo));
     }
 
-    public function store(AddTodoRequest $request)
+    public function store(StoreTodoRequest $request)
     {
         $user_id = Auth::id();
         $data = $request->validated();

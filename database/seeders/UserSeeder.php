@@ -22,19 +22,19 @@ class UserSeeder extends Seeder
         User::query()->create([
             'name' => 'Tasnim Alshair',
             'email' => 'tasnim@gmail.com',
-            'password' => Hash::make('123456')
+            'password' => '123456'
         ]);
 
         User::query()->create([
             'name' => 'Yanal Amr',
             'email' => 'yanalamr@gmail.com',
-            'password' => Hash::make('654321')
+            'password' => '654321'
         ]);
 
          User::query()->create([
             'name' => 'Toqa Jamil',
             'email' => 'toqa@gmail.com',
-            'password' => Hash::make('123456')
+            'password' => '123456'
         ]);
     }
 }

@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Category;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AddCategoryRequest;
-use App\Http\Requests\CategoryRequest;
-use App\Http\Requests\UpdateCategoryRequest;
+use App\Http\Requests\Category\StoreCategoryRequest;
+use App\Http\Requests\Category\UpdateCategoryRequest;
 use App\Http\Resources\CategoryResource;
 use App\Http\Traits\ApiResponse;
 use App\Models\Category;
@@ -30,7 +29,7 @@ class CategoryController extends Controller
         return $this->success('Category retrived successfully', 200, new CategoryResource($category));
     }
 
-    public function store(AddCategoryRequest $request)
+    public function store(StoreCategoryRequest $request)
     {
         $user_id = Auth::id();
         $data = $request->validated();
