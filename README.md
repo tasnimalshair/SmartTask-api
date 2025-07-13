@@ -14,7 +14,7 @@ It includes:
 
 - 🔐 User authentication with Laravel Sanctum
 - 📝 Full CRUD operations for todos (linked to each user)
-- 📁 Full CRUD for categories
+- 📁 Full CRUD for categories (linked to each user)
 - 📬 Notifications when tasks are completed (Email + stored in DB)
 - 📊 Weekly statistics endpoint
 - 🕒 Scheduled weekly report via email and database
