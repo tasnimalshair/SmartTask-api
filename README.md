@@ -137,4 +137,4 @@ Example of login request and response
 
 ## 👩‍💻 Author
 
-Tasnim Alshair – [GitHub Profile](https://github.com/tasnimalshair)
+Tasnim Alshair – [GitHub Profile](https://github.com/tasnimalshair) [Linhedin Profile](https://www.linkedin.com/in/tasnim-alshair-aa11a4266/)
